@@ -8,6 +8,7 @@ import {NEARBY_SATELLITE, SAT_API_KEY, STARLINK_CATEGORY} from "../constants";
 class Main extends Component {
     constructor(){
         super();
+        //UI will change when these info change
         this.state = {
             satInfo: null,
             settings: null,
