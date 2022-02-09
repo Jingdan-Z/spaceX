@@ -1,25 +1,21 @@
 import React, {Component} from 'react';
-import { Row, Col } from 'antd';
+import { Row, Col } from 'antd'
 import axios from 'axios';
 import SatSetting from './SatSetting';
 import SatelliteList from './SatelliteList';
+import WorldMap from './WorldMap';
 import {NEARBY_SATELLITE, SAT_API_KEY, STARLINK_CATEGORY} from "../constants";
+
 
 class Main extends Component {
     constructor(){
         super();
-        //UI will change when these info change
         this.state = {
             satInfo: null,
-            settings: null,
             isLoadingList: false
         };
     }
-
     showNearbySatellite = (setting) => {
-        this.setState({
-            settings: setting
-        })
         this.fetchSatellite(setting);
     }
 
@@ -42,24 +38,31 @@ class Main extends Component {
        .catch(error => {
            console.log('err in fetch satellite -> ', error);
        })
-}
+    }
+
+    showMap = () => {
+        console.log('show on the map');
+    }
 
     render() {
-        const { satInfo, isLoadingList } = this.state;
+        const { satInfo } = this.state;
         return (
-            <Row className='main'>
-                <Col span={8} className='left-side'>
-                    <SatSetting onShow={this.showNearbySatellite}/>
-                    <SatelliteList satInfo={satInfo}
-                                   isLoad={isLoadingList}
-                    />
-                </Col>
-                <Col span={16} className="right-side">
-                    right
-                </Col>
+            <Row className="main">
+              <Col span={8} className="left-side">
+                <SatSetting onShow={this.showNearbySatellite} />
+                <SatelliteList
+                   satInfo={satInfo}
+                   isLoad={this.state.isLoadingList}
+                   onShowMap={this.showMap}
+                />
+              </Col>
+              <Col span={16} className="right-side">
+                <WorldMap />
+              </Col>
             </Row>
         );
     }
 }
 
 export default Main;
+
