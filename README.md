@@ -1,6 +1,5 @@
 # What is this web application about?
 The application will track the path of the satellites selected based on altitude, latitude, longtitude etc. The path of the satellites will show on the world map for the duration (in seconds) selected.
-<img src="/Users/jingdanzhang/Desktop/Screen Shot 2022-02-10 at 10.58.56 PM.png"/>
 ### Designed and developed a visualization dashboard using ReactJS and D3 to track satellites in real-time based on geo-location.
 ### Built location, altitude, and duration based selector to refine satellite search.
 ### Animated selected satellite paths on a world map using D3 to improve the user friendness.
